@@ -7,7 +7,6 @@ struct StackList {
     }
     bool isEmpty() { return topIndex == -1; }
     bool isFull() { return topIndex == MAX - 1; }
-    int size() { return topIndex + 1; }
 // Chèn đầu
     void ChenDau(int a) {
         if (isFull()) {
@@ -23,11 +22,6 @@ struct StackList {
         topIndex--;
         return v;
     }
-    int Top() {
-        if (isEmpty()) return -1;
-        return arr[topIndex];
-    }
-};
 2. Dùng LinkedList
 struct StackLinkedList {
     Node* head;
@@ -37,7 +31,6 @@ struct StackLinkedList {
         n = 0;
     }
     bool isEmpty() { return head == nullptr; }
-    int size() { return n; }
 // Chèn đầu
     void ChenDau(int a) {
         Node* newNode = new Node();
@@ -56,8 +49,3 @@ struct StackLinkedList {
         n--;
         return v;
     }
-    int top() {
-        if (isEmpty()) return -1;
-        return head->data;
-    }
-};
