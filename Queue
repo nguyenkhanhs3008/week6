@@ -1,0 +1,71 @@
+1.Dùng List
+struct QueueList {
+    int arr[MAX];
+    int frontIndex;
+    int rearIndex;
+    int count;
+    void init() {
+        frontIndex = 0;
+        rearIndex = MAX - 1;
+        count = 0;
+    }
+    bool isEmpty() { return count == 0; }
+    bool isFull() { return count == MAX; }
+    int size() { return count; }
+    //Chèn cuối
+    void ChenCuoi(int a) {
+        if (isFull()) {
+            cout << "Full";
+            return;
+        }
+        rearIndex = (rearIndex + 1) % MAX;
+        arr[rearIndex] = val;
+        count++;
+    }
+    //Xóa đầu
+    int XoaDau() {
+        if (isEmpty()) return -1;
+        int v = arr[frontIndex];
+        frontIndex = (frontIndex + 1) % MAX;
+        count--;
+        return v;
+    }
+2. Dùng Linkedlist
+struct Node {
+    int data;
+    Node* next;
+};
+struct QueueLinkedList {
+    Node* head;
+    Node* tail;
+    int n;
+    void init() {
+        head = tail = nullptr;
+        n = 0;
+    }
+    bool isEmpty() { return head == nullptr; }
+    int size() { return n; }
+    //Chèn cuối
+    void ChenCuoi(int a) {
+        Node* newNode = new Node();
+        newNode->data = a;
+        newNode->next = nullptr;
+        if (isEmpty()) {
+            head = tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = newNode;
+        }
+        n++;
+    }
+//Xóa đầu
+    int XoaDau() {
+        if (isEmpty()) return -1;
+        Node* temp = head;
+        int v = temp->data;
+        head = head->next;
+        if (head == nullptr) tail = nullptr;
+        delete temp;
+        n--;
+        return v;
+    }
