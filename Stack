@@ -25,10 +25,8 @@ struct StackList {
 2. Dùng LinkedList
 struct StackLinkedList {
     Node* head;
-    int n;
     void init() {
         head = nullptr;
-        n = 0;
     }
     bool isEmpty() { return head == nullptr; }
 // Chèn đầu
@@ -37,7 +35,6 @@ struct StackLinkedList {
         newNode->data = a;
         newNode->next = head;
         head = newNode;
-        n++;
     }
 // Xóa đầu
     int XoaDau() {
@@ -46,6 +43,5 @@ struct StackLinkedList {
         int v = temp->data;
         head = head->next;
         delete temp;
-        n--;
         return v;
     }
